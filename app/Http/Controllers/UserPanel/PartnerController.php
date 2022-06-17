@@ -58,10 +58,7 @@ class PartnerController extends Controller
 
             }
       
-
             $count = 0;
-
-
             if(isset($form_collect['religion']))
             {
                 foreach($form_collect['religion'] as $key => $value)
@@ -126,6 +123,8 @@ class PartnerController extends Controller
                 }
 
             }
+            $count = 0;
+
             if(isset($form_collect['qualification']))
             {
 
@@ -171,7 +170,6 @@ class PartnerController extends Controller
                     $count++;
 
                 }
-
             }
             if(isset($form_collect['min_age']) && isset($form_collect['max_age'])){
 

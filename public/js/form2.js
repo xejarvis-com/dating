@@ -54,16 +54,16 @@ $("#country_citizenship").keyup(function() {
 
 // Marital Status
 
-$("#material_status").keyup(function() {
-    var material_status = $("#material_status").val();
-    if (!material_status.test($("#material_status").val())) {
-        $("#error-material_status").text('Please Specify Marital Status.');
-        $("#material_status").addClass("box_error");
+$("#marital_status").keyup(function() {
+    var marital_status = $("#marital_status").val();
+    if (!marital_status.test($("#marital_status").val())) {
+        $("#error-marital_status").text('Please Specify Marital Status.');
+        $("#marital_status").addClass("box_error");
         error = true;
     } else {
-        $("#error-material_status").text('');
+        $("#error-marital_status").text('');
         error = false;
-        $("#material_status").removeClass("box_error");
+        $("#marital_status").removeClass("box_error");
     }
 });
 
@@ -164,18 +164,18 @@ $(".fs_next_btn").click(function() {
 
     // Marital Status
 
-    if ($("#material_status").val() === '') {
-        $("#error-material_status").text('Select Your Marital Status.');
-        $("#material_status").addClass("box_error");
+    if ($("#marital_status").val() === '') {
+        $("#error-marital_status").text('Select Your Marital Status.');
+        $("#marital_status").addClass("box_error");
         error = true;
     } else {
-        var material_status = $("#material_status").val();
-        if (material_status !== material_status) {
-            $("#error-material_status").text('Marital Status required.');
+        var marital_status = $("#marital_status").val();
+        if (marital_status !== marital_status) {
+            $("#error-marital_status").text('Marital Status required.');
             error = true;
         } else {
-            $("#error-material_status").text('');
-            $("#live_material_status").removeClass("box_error");
+            $("#error-marital_status").text('');
+            $("#live_marital_status").removeClass("box_error");
             error = false;
         }
     }

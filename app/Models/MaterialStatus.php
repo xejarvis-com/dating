@@ -11,6 +11,6 @@ class MaterialStatus extends Model
 
 
     protected $fillable = [
-        'material_status'
+        'marital_status'
     ];
 }

@@ -29,11 +29,11 @@ class MaterialStatusController extends Controller
     public function statusAddProcess(Request $request)
     {
         $request->validate([
-            'material_status' => 'required'
+            'marital_status' => 'required'
         ]);
 
         $data = new MaterialStatus();
-        $data->material_status = $request->input('material_status');
+        $data->marital_status = $request->input('marital_status');
         $data->save();
         return redirect('/admin/status')
             ->with('message','Your Data Has Been Created Successfully');
@@ -60,7 +60,7 @@ class MaterialStatusController extends Controller
     {
 
         $data = $request->validate([
-            'material_status' => 'required'
+            'marital_status' => 'required'
         ]);
 
         MaterialStatus::whereId($id)->update($data);

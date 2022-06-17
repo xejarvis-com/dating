@@ -33,8 +33,8 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="">Add Marital Status Title</label>
-                                        <input type="text" class="form-control" name="material_status">
-                                        @error('material_status')
+                                        <input type="text" class="form-control" name="marital_status">
+                                        @error('marital_status')
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>

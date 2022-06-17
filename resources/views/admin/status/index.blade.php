@@ -57,7 +57,7 @@
                                                                 @foreach($matrial as $item)
                                                                     <tr>
                                                                         <td>{{ $item->id }}</td>
-                                                                        <td>{{ $item->material_status }}</td>
+                                                                        <td>{{ $item->marital_status }}</td>
                                                                         <td>
                                                                             <a href="{{ url('/admin/status-edit') }}/{{ $item->id }}" class="btn btn-outline-info">Edit</a>
                                                                             <a href="{{ url('/admin/status-delete') }}/{{ $item->id }}" class="btn btn-outline-danger">Delete</a>

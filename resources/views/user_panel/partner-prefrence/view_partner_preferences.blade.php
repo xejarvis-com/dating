@@ -157,7 +157,7 @@ ul{
                 <!--begin::Details item-->
                 <div class="fw-bolder mt-4">Marital Status</div>
                 <div class="text-gray-600">
-                    <a href="#" class="text-gray-600 text-hover-primary">{{$rows->material_status}}</a>
+                    <a href="#" class="text-gray-600 text-hover-primary">{{$rows->marital_status}}</a>
                 </div>
 
             </div>

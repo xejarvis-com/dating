@@ -52,9 +52,9 @@
                                 <p class="mb-0">Marital status</p>
                             </div>
                             <div class="col-8">
-                                <select class="form-select" name="material_status" aria-label="Default select example">
+                                <select class="form-select" name="marital_status" aria-label="Default select example">
                                     @foreach($materialStatus as $item)
-                                    <option value="{{$item->material_status}}" {{ $user->material_status == $item->material_status ? 'selected' : '' }}>{{$item->material_status}}</option>
+                                    <option value="{{$item->marital_status}}" {{ $user->marital_status == $item->marital_status ? 'selected' : '' }}>{{$item->marital_status}}</option>
                                     @endforeach
                                 </select>
                             </div>

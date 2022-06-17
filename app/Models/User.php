@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Auth;
+use Carbon\Carbon;
+use DateTime;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -57,21 +59,23 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return User::where('id' , $id)->first();
     }
+
+    public function age() {
+
+        return $this->dob->diffInYears(\Carbon::now());
+    }
+
     public function getUserListByFilters($condition,$age_condition,$conditionArr)
     {
-        // dd($marital_con);
         $user = User::join('profiles','users.id' ,'profiles.user_id')
-        ->select('profiles.id as profile_id','users.id as user_id','users.first_name','users.last_name','profiles.city_live','users.dob','profiles.material_status','users.religion','users.community','profiles.sub_community')
+        ->select('profiles.id as profile_id','users.id as user_id','users.first_name','users.last_name','profiles.city_live','users.dob','profiles.marital_status','users.religion','users.community','profiles.sub_community')
         ->where('users.id','!=',Auth::user()->id)
         ->where('profiles.height','>=',$conditionArr['min_height'])
         ->where('profiles.height','<=',$conditionArr['max_height']);
-        // ->whereRaw(date_diff('users.dob', now()) , '>=' ,$age_condition['min_age']);
-        // ->where(date_diff('users.dob',now()), '>=',$age_condition['min_age']);
-        // ->where('Carbon::parse(users.dob)->diff(Carbon::now())->y' ,'<=', $age_condition['max_age']);
+
         if(isset($condition['marital_status']))
         {
-            $user->whereIn('profiles.material_status',$condition['marital_status']);
-           
+            $user->whereIn('profiles.marital_status',$condition['marital_status']);
         }
         if( isset($condition['religion']))
         {
@@ -105,8 +109,37 @@ class User extends Authenticatable implements MustVerifyEmail
         {
             $user->whereIn('profiles.designation',$condition['profession']);
         }
-        return $user->get();
+        $user_list = $user->get();
+  
+        $users =[];
 
+        foreach($user_list as $key =>$rows)
+        {
+
+          $age = $this->getAge($rows->dob);
+
+          if($age >= $age_condition['min_age'] && $age <= $age_condition['max_age'] )
+          {
+            $users[] = $rows;
+          }
+
+        }
+     
+        return $users;
+
+    }
+
+    public function getAge($date)
+    {
+        
+        $dob = new DateTime($date);
+        
+        $now = new DateTime();
+        $difference = $now->diff($dob);
+        
+        $age = $difference->y;
+         
+        return  $age;
     }
 
     public function getNewMatches($condition1,$condition2,$condition3,$condition4)
@@ -114,7 +147,7 @@ class User extends Authenticatable implements MustVerifyEmail
 // dd($condition);
 
         return User::join('profiles','users.id' ,'profiles.user_id')
-        ->select('profiles.id as profile_id','users.id as user_id','users.first_name','users.last_name','profiles.city_live','users.dob','profiles.material_status','users.religion','users.community','profiles.sub_community')
+        ->select('profiles.id as profile_id','users.id as user_id','users.first_name','users.last_name','profiles.city_live','users.dob','profiles.marital_status','users.religion','users.community','profiles.sub_community')
          ->where($condition1)
          ->where($condition2)
          ->where($condition3)
@@ -128,7 +161,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getUserProfiles()
     {
         return User::join('profiles','users.id' ,'profiles.user_id')
-        ->select('profiles.id as profile_id','users.id as user_id','users.first_name','users.last_name','profiles.city_live','users.dob','profiles.material_status','users.religion','users.community','profiles.sub_community')
+        ->select('profiles.id as profile_id','users.id as user_id','users.first_name','users.last_name','profiles.city_live','users.dob','profiles.marital_status','users.religion','users.community','profiles.sub_community')
         ->where('users.id' ,'!=', Auth::user()->id)
         ->get();
     }

@@ -38,7 +38,7 @@
                                                     <p class="text-light p-1 mb-0">Marital Status</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <p class="mb-0 p-1">:&nbsp;{{ $user->material_status }}</p>
+                                                    <p class="mb-0 p-1">:&nbsp;{{ $user->marital_status }}</p>
                                                 </div>
                                                 <div class="col-6">
                                                     <p class="text-light mb-0 p-1">Posted by</p>
@@ -144,7 +144,7 @@
                                                     <p class="text-light mb-0 p-1">Marital Status</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <p class="mb-0 p-1">:&nbsp;{{$user->material_status}}</p>
+                                                    <p class="mb-0 p-1">:&nbsp;{{$user->marital_status}}</p>
                                                 </div>
                                                 <div class="col-6">
                                                     <p class="text-light mb-0 p-1">Height</p>

@@ -53,14 +53,14 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Marital status*</label>
-                                <select class="form-control1" name="material_status" id="material_status" aria-label="Default select example">
+                                <select class="form-control1" name="marital_status" id="marital_status" aria-label="Default select example">
                                     <option value="" selected>Select Option</option>
                                     @foreach($materialStatus as $material)
-                                        <option value="{{ $material->material_status }}">{{ $material->material_status }}</option>
+                                        <option value="{{ $material->marital_status }}">{{ $material->marital_status }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <span id="error-material_status"></span>
+                            <span id="error-marital_status"></span>
                         </div>
                     </div>
                     <div class="row mb-3">

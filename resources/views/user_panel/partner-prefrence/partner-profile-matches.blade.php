@@ -214,7 +214,7 @@
                 <select class="form-select js-example-basic-multiple" name="marital_status[]" multiple="multiple">
                   <option value="0">Select</option>
                   @foreach($material as $item)
-                  <option value="{{ $item->material_status }}">{{ $item->material_status }}</option>
+                  <option value="{{ $item->marital_status }}">{{ $item->marital_status }}</option>
                   @endforeach
                 </select>
               </div>
@@ -398,10 +398,7 @@
                 </p>
               </div>
               <div class="col-9 d-flex">
-                <label for="dietarray-Veg">
-                  <input type="checkbox" name="diet[]" id="" value="All">
-                  Open to all
-                </label>
+             
                 <label style="margin-left: 23px">
                   <input type="checkbox" name="diet[]" id="" value="Vegetarian">
                   Veg

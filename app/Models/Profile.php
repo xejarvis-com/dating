@@ -14,7 +14,7 @@ class Profile extends Model
             'user_id',
             'city_live',
             'live_family',
-            'material_status',
+            'marital_status',
             'diet',
             'height',
             'sub_community',

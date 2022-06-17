@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->string('city_live')->nullable();
             $table->string('live_family')->nullable();
-            $table->string('material_status')->nullable();
+            $table->string('marital_status')->nullable();
             $table->string('diet')->nullable();
             $table->string('height')->nullable();
             $table->string('sub_community')->nullable();

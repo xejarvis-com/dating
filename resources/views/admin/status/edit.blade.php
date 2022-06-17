@@ -33,7 +33,7 @@
                                     @method('put')
                                     <div class="form-group">
                                         <label for="">Profile For</label>
-                                        <input type="text" class="form-control" value="{{ $materialStatus->material_status }}" name="material_status">
+                                        <input type="text" class="form-control" value="{{ $materialStatus->marital_status }}" name="marital_status">
                                         @error('religion')
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror

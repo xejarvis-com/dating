@@ -35,7 +35,7 @@
                                                     <p class="text-light mb-0">Marital Status</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <p class="mb-0">:&nbsp;{{ $user->material_status }}</p>
+                                                    <p class="mb-0">:&nbsp;{{ $user->marital_status }}</p>
                                                 </div>
                                                 <div class="col-6">
                                                     <p class="text-light mb-0">Posted by</p>

@@ -119,7 +119,7 @@ class UserPanelController extends Controller
     {
         $user = User::with('profile')->where('id',Auth::id())->first();
         $user->profile_for = $request->profile_for;
-        $user->profile->material_status = $request->material_status;
+        $user->profile->marital_status = $request->marital_status;
         $user->dob = $request->dob;
         $user->profile->blood_group = $request->blood_group;
         $user->religion = $request->religion;
@@ -173,7 +173,7 @@ class UserPanelController extends Controller
         // $request->validate([
         //     'city_live' => 'required',
         //     'live_family' => 'required',
-        //     'material_status' => 'required',
+        //     'marital_status' => 'required',
         //     'diet' => 'required',
         //     'height' => 'required',
         //     'sub_community' => 'required',
@@ -192,7 +192,7 @@ class UserPanelController extends Controller
             'user_id'=> Auth::id(),
             'city_live' => $request->input('city_live'),
             'live_family' => $request->input('live_family'),
-            'material_status' => $request->input('material_status'),
+            'marital_status' => $request->input('marital_status'),
             'diet' => $request->input('diet'),
             'height' => $request->input('height'),
             'sub_community' => $request->input('sub_community'),
@@ -261,9 +261,9 @@ class UserPanelController extends Controller
             }
             $condition3 = [];
 
-            if(isset($curr_user->profile->material_status))
+            if(isset($curr_user->profile->marital_status))
             {
-                $condition3 = ['profiles.material_status' => $curr_user->profile->material_status];
+                $condition3 = ['profiles.marital_status' => $curr_user->profile->marital_status];
 
             }
             if(isset($curr_user->profile->city_live))
