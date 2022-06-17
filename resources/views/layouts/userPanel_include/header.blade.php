@@ -43,16 +43,16 @@
            
                 <div class="d-flex align-items-center ms-1">
                     <!--begin::Menu wrapper-->
-                    <div class="btn btn-icon btn-color-white bg-hover-white bg-hover-opacity-10 w-35px h-35px h-md-40px w-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" style="position:relative;left: 550px !important;;top: 8px !important;">
+                    <div class="btn btn-icon btn-color-white bg-hover-white bg-hover-opacity-10 w-35px h-35px h-md-40px w-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
                         <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
                         <span class="svg-icon svg-icon-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16"> <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/> </svg>
                         </span>
                         <!--end::Svg Icon-->
-                        <span style="position: relative; top: -5px;" class="label label-sm label-rounded font-weight-bold label-danger notify_counts text-dark">0</span>
+                        <span style="position: relative; top: -5px;" class="label label-sm label-rounded font-weight-bold label-danger notify_counts text-dark">1</span>
                     </div>
                     <!--begin::Menu-->
-                    <div class="menu menu-sub menu-sub-dropdown menu-column w-250px" data-kt-menu="true" style="margin-left:70px !important;">
+                    <div class="menu menu-sub menu-sub-dropdown menu-column w-250px w-lg-325px notification__list" data-kt-menu="true" style="">
                         <!--begin::Heading-->
                         <div class="d-flex flex-column flex-center bgi-no-repeat rounded-top px-4 py-3 float-right" style="background-image:url('assets/media/misc/pattern-1.jpg')">
                             <!--begin::Title-->

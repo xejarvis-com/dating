@@ -65,7 +65,8 @@ class User extends Authenticatable implements MustVerifyEmail
         ->where('users.id','!=',Auth::user()->id)
         ->where('profiles.height','>=',$conditionArr['min_height'])
         ->where('profiles.height','<=',$conditionArr['max_height']);
-        // ->where(date_diff(''), '>=',$age_condition['min_age'])
+        // ->whereRaw(date_diff('users.dob', now()) , '>=' ,$age_condition['min_age']);
+        // ->where(date_diff('users.dob',now()), '>=',$age_condition['min_age']);
         // ->where('Carbon::parse(users.dob)->diff(Carbon::now())->y' ,'<=', $age_condition['max_age']);
         if(isset($condition['marital_status']))
         {
