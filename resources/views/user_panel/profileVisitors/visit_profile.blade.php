@@ -11,7 +11,6 @@
                         <h3>
                             <strong>{{ $user->first_name }} {{ $user->last_name }}</strong>
                         </h3>
-                        <!--<a href="{{route('sendrequest',['id' => $user->user_id])}}" class="btn btn-primary" style="float:right;">Send Connection Request</a>-->
                     </div>
                     <div class="profile-detail mt-2">
                         <div class="row">

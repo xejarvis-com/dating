@@ -31,15 +31,29 @@
                             <div class="card-body">
                                 <form action="{{ url('admin/height-add-process') }}" method="post">
                                     @csrf
+                                    <div class="row">
+                                        <div class="col-lg-6">
 
-                                    <div class="form-group">
-                                        <label for="">Add Height Title</label>
-                                        <input type="text" class="form-control" name="height">
-                                        @error('religion')
-                                        <div class="text-danger">{{ $message }}</div>
-                                        @enderror
+                                            <div class="form-group">
+                                            <label for="">Ft:</label>
+                                            <input type="number" class="form-control" placeholder="Height in Ft" name="feet">
+                                            @error('height')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                            <label for="">inches:</label>
+                                            <input type="number" class="form-control" placeholder="Height in inches" name="inches">
+                                            @error('height')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                            </div>
+                                        </div>
+                                    
                                     </div>
-
+                                  
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-bg-gradient-x-blue-green">Save</button>
                                     </div>

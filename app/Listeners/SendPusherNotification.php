@@ -37,7 +37,7 @@ class SendPusherNotification
         // END PUSHER CONFIGURATION
 
         // STORE PUSER NOTIFICATION IN OUR SYSTEM
-        if(@count($event->to_users) > 0)
+        if($event->to_users > 0)
         {
             $notify = new ModelsNotificationPusher;
 

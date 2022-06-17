@@ -49,7 +49,11 @@ class NotificationPusher extends Model
         return NotificationPusher::where('is_seen',0)->whereJsonContains('to_user_id',Auth::user()->id)->orderBy('id','desc')->take(50)->get();
     }
 
-
+    public function getUserRequests()
+    {
+        return NotificationPusher::whereJsonContains('from_user_id',Auth::user()->id)->orderBy('id','desc')->get();
+    }
+    
     public function updateNotificationSeen($id)
     {
         return NotificationPusher::where('id',$id)->update(['is_seen' => 1]);

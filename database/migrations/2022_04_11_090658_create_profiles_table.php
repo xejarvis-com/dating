@@ -38,6 +38,8 @@ return new class extends Migration
             $table->string('family_location')->nullable();
             $table->string('native_place')->nullable();
             $table->string('siblings')->nullable();
+            $table->string('no_of_sisters')->nullable();
+            $table->string('no_of_brothers')->nullable();
             $table->string('family_type')->nullable();
             $table->string('family_values')->nullable();
             $table->string('family_affluence')->nullable();

@@ -74,14 +74,14 @@
                                         <div id="kt_user_view_details" class="collapse show" style="">
                                             <div class="pb-5 fs-6">
                                                 <!--begin::Details item-->
-                                                <div class="fw-bolder mt-5">Account ID</div>
-                                                <div class="text-gray-600">ID-45453423</div>
+                                                <div class="fw-bolder mt-5">City</div>
+                                                <div class="text-gray-600">{{Auth::user()->city_live}}</div>
                                                 <!--begin::Details item-->
                                                 <!--begin::Details item-->
                                                 <div class="fw-bolder mt-5">Email</div>
                                                 <div class="text-gray-600">
                                                     <a href="#"
-                                                        class="text-gray-600 text-hover-primary">info@keenthemes.com</a>
+                                                        class="text-gray-600 text-hover-primary">{{Auth::user()->email}}</a>
                                                 </div>
 
                                             </div>
@@ -99,7 +99,7 @@
                                     <div class="col-6 mb-2">
                                         <div class="alert-danger alert mb-0">
                                             <div class="d-flex align-items-center">
-                                                <div class="avatar rounded no-thumbnail bg-danger text-white p-1">10</div>
+                                                <div class="avatar rounded no-thumbnail bg-danger text-white p-1">{{$pending_invitations->count()}}</div>
                                                 <div class="flex-fill ms-3 text-truncate">
                                                     <div class="h6 mb-0">No Pending Invitations</div>
                                                 </div>
@@ -109,7 +109,7 @@
                                     <div class="col-6 mb-2">
                                         <div class="alert-success alert mb-0">
                                             <div class="d-flex align-items-center">
-                                                <div class="avatar rounded no-thumbnail bg-success text-white p-1">10</div>
+                                                <div class="avatar rounded no-thumbnail bg-success text-white p-1">{{$accepted_invitations->count()}}</div>
                                                 <div class="flex-fill ms-3 text-truncate">
                                                     <div class="h6 mb-0">Accepted Invitations</div>
                                                 </div>
@@ -146,96 +146,15 @@
                                 <h3 class="card-title fw-bolder text-dark">New Matches For <You></You>
                                 </h3>
                                 <div class="card-toolbar">
-                                    <!--begin::Menu-->
-                                    <span class="btn btn-sm btn-icon bg-primary text-white">
-                                        40
-                                    </span>
-                                    <!--end::Menu-->
+                                  
                                 </div>
                             </div>
                             <!--end::Header-->
                             <!--begin::Body-->
-                            <div class="card-body pt-2">
-                                <!--begin::Item-->
-                                <div class="d-flex align-items-center mb-7">
-                                    <!--begin::Avatar-->
-                                    <div class="symbol symbol-50px me-5">
-                                        <img src="{{ url('public/assets/media/avatars/300-6.jpg')}}" class="" alt="">
-                                    </div>
-                                    <!--end::Avatar-->
-                                    <!--begin::Text-->
-                                    <div class="flex-grow-1">
-                                        <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">Emma Smith</a>
-                                        <span class="text-muted d-block fw-bold">Project Manager</span>
-                                    </div>
-                                    <div class="flex-grow-1 symbol symbol-50px me-5">
-                                        <div class="circle py-4 symbol-label">
-                                            <i class="fa fa-check"></i>
-                                        </div>
-                                    </div>
-                                    <!--end::Text-->
-                                </div>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <div class="d-flex align-items-center mb-7">
-                                    <!--begin::Avatar-->
-                                    <div class="symbol symbol-50px me-5">
-                                        <img src="{{ url('public/assets/media/avatars/300-5.jpg')}}" class="" alt="">
-                                    </div>
-                                    <!--end::Avatar-->
-                                    <!--begin::Text-->
-                                    <div class="flex-grow-1">
-                                        <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">Sean Bean</a>
-                                        <span class="text-muted d-block fw-bold">PHP, SQLite, Artisan CLI</span>
-                                    </div>
-                                    <!--end::Text-->
-                                </div>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <div class="d-flex align-items-center mb-7">
-                                    <!--begin::Avatar-->
-                                    <div class="symbol symbol-50px me-5">
-                                        <img src="{{ url('public/assets/media/avatars/300-11.jpg')}}" class="" alt="">
-                                    </div>
-                                    <!--end::Avatar-->
-                                    <!--begin::Text-->
-                                    <div class="flex-grow-1">
-                                        <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">Brian Cox</a>
-                                        <span class="text-muted d-block fw-bold">PHP, SQLite, Artisan CLI</span>
-                                    </div>
-                                    <!--end::Text-->
-                                </div>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <div class="d-flex align-items-center mb-7">
-                                    <!--begin::Avatar-->
-                                    <div class="symbol symbol-50px me-5">
-                                        <img src="{{ url('public/assets/media/avatars/300-9.jpg') }}" class="" alt="">
-                                    </div>
-                                    <!--end::Avatar-->
-                                    <!--begin::Text-->
-                                    <div class="flex-grow-1">
-                                        <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">Francis Mitcham</a>
-                                        <span class="text-muted d-block fw-bold">PHP, SQLite, Artisan CLI</span>
-                                    </div>
-                                    <!--end::Text-->
-                                </div>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <div class="d-flex align-items-center">
-                                    <!--begin::Avatar-->
-                                    <div class="symbol symbol-50px me-5">
-                                        <img src="{{ url('public/assets/media/avatars/300-23.jpg')}}" class="" alt="">
-                                    </div>
-                                    <!--end::Avatar-->
-                                    <!--begin::Text-->
-                                    <div class="flex-grow-1">
-                                        <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">Dan Wilson</a>
-                                        <span class="text-muted d-block fw-bold">PHP, SQLite, Artisan CLI</span>
-                                    </div>
-                                    <!--end::Text-->
-                                </div>
-                                <!--end::Item-->
+                            <div class="card-body pt-2" id="new_matches_section">
+                              
+                               
+                               
                             </div>
                             <!--end::Body-->
                         </div>
@@ -247,4 +166,29 @@
             <div class="col-md-3"></div>
         </div>
     </div>
+@endsection
+
+@section('script')
+
+<script>
+  $(document).ready(function() {
+
+    var user_id = "{{Auth::user()->id}}"
+    getNewMatches(user_id, "#new_matches_section")
+
+  });
+  
+function getNewMatches(user_id,target)
+    {
+        var route = "{{route('newmatches')}}";
+
+        $.get(route,{user_id:user_id},function(resulr){
+
+            $(target).html(resulr.view);
+
+        });
+    }
+
+</script>
+
 @endsection

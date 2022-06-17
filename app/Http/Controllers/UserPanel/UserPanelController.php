@@ -4,6 +4,7 @@ namespace App\Http\Controllers\UserPanel;
 
 use App\Http\Controllers\Controller;
 use App\Models\Community;
+use App\Models\ConnectionRequest;
 use App\Models\Education;
 use App\Models\MaterialStatus;
 use App\Models\Diet;
@@ -23,9 +24,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
     use Carbon\Carbon;
+use Illuminate\Contracts\Encryption\DecryptException;
 
 class UserPanelController extends Controller
 {
+    public function __construct()
+    {
+        $this->connection_request = new ConnectionRequest;
+        $this->user = new User;
+
+    }
 
     // Profile View
 
@@ -40,15 +48,9 @@ class UserPanelController extends Controller
     //
     public function UserPanel()
     {
-
-
-
 //        $mytime = \Carbon\Carbon::now();
 //        $onlineUsers = User::where('last_seen','=',$mytime )->first();
 //        $users = User::all();
-
-
-
 
         $image = Image::where('user_id',Auth::id())->orderby('id','desc')->first();
         $profile_view = new ProfileView;
@@ -61,6 +63,10 @@ class UserPanelController extends Controller
 
             $visitors_list = $profile_view->getVisitorsListByUserId($profile->id);
             $visitors_count = $visitors_list->count();
+            $invitation_list = $this->connection_request->getConnectionRequestsByUserId(Auth::user()->id);
+
+            $accepted_invitations = $invitation_list->where('status','Accepted');
+            $pending_invitations = $invitation_list->where('status','Sent');
 
         }
         else{
@@ -134,6 +140,9 @@ class UserPanelController extends Controller
         $user->profile->current_company = $request->current_company;
         $user->profile->salary = $request->salary;
         $user->profile->bio = $request->bio;
+        $user->profile->siblings = $request->siblings;
+        $user->profile->no_of_brothers = $request->brothers;
+        $user->profile->no_of_sisters = $request->sisters;
         $user->save();
         $user->profile->save();
         return redirect('userPanel/profile')->with('success','Your Data has been Updated Successfully');
@@ -222,6 +231,61 @@ class UserPanelController extends Controller
     {
         $plans = Package::all();
         return view('user_panel.price-plan.plan',get_defined_vars());
+    }
+
+
+    public function getNewMatches(Request $request)
+    {
+        $data = ['view' => ''];
+        $user_id = $request->user_id;
+
+        $user = new User;
+
+        $curr_user = $user->getUserById($user_id);
+// dd($curr_user->profile);
+        if(isset($curr_user->id))
+        {
+            $condition1 = [];
+
+            if(isset($curr_user->community))
+          {
+                $condition1 = ['users.community' => $curr_user->community];
+
+            }
+            $condition2 = [];
+
+            if(isset($curr_user->religion))
+          {
+                $condition2 = ['users.religion' => $curr_user->religion];
+
+            }
+            $condition3 = [];
+
+            if(isset($curr_user->profile->material_status))
+            {
+                $condition3 = ['profiles.material_status' => $curr_user->profile->material_status];
+
+            }
+            if(isset($curr_user->profile->city_live))
+            {
+                $condition4 = ['profiles.city_live' => $curr_user->profile->city_live];
+
+            }
+          
+            $users_list = $user->getNewMatches($condition1,$condition2,$condition3,$condition4);
+            $images = Image::orderby('id','desc')->get();
+
+
+            $data['view']  =  view('user_panel.components.new_matches',[
+
+                'users_list'         =>  $users_list,
+                'images'            => $images
+
+            ])->render();
+
+            return $data;
+
+        }
     }
 
 

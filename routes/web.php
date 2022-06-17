@@ -110,6 +110,7 @@ Route::group(['middleware'=>['auth','verified']],function () {
             function ()
             {
                 Route::get('/partner-profile','partner')->name('partner-profile');
+                Route::post('/partnerpreferences','partnerPreferences')->name('partnerpreferences');
 
             }
         );
@@ -125,6 +126,12 @@ Route::get('seennotification',[App\Http\Controllers\NotificationPusherController
 
 Route::get('appearnotification',[ App\Http\Controllers\NotificationPusherController::class,'appearNotification'])->name('appearnotification');
 
+Route::get('newmatches',[ App\Http\Controllers\UserPanel\UserPanelController::class,'getNewMatches'])->name('newmatches');
+
+
+Route::get('connectionrequests/{id}',[ App\Http\Controllers\ConnectionRequestController::class,'viewConnectionRequests'])->name('connectionrequests');
+
+Route::get('acceptrequest',[ App\Http\Controllers\ConnectionRequestController::class,'acceptRequest'])->name('acceptrequest');
 
 
 });

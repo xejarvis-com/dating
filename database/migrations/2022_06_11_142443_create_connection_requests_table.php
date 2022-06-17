@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('heights', function (Blueprint $table) {
+        Schema::create('connection_requests', function (Blueprint $table) {
             $table->id();
-            $table->string('height');
-            $table->double('height_in_cm');
+            $table->bigInteger('to_user_id')->nullable();
+            $table->bigInteger('from_user_id')->nullable();
+            $table->string('status')->default('Sent')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('heights');
+        Schema::dropIfExists('connection_requests');
     }
 };

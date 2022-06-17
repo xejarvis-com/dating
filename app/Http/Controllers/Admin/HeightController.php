@@ -29,12 +29,23 @@ class HeightController extends Controller
     public function heightAddProcess(Request $request)
     {
         $request->validate([
-            'height' => 'required'
+            'feet' => 'required',
+            'inches' => 'required'
         ]);
 
-        $data = new Height;
-        $data->height = $request->input('height');
-        $data->save();
+        $height = new Height;
+        //   5 * 30.48 cm + 7 * 2.54 cm.
+        $inches = $request->input('inches');
+        $feet = $request->input('feet');
+
+        $feet_in_centimeters = ($feet * 30.48);
+        $inches_in_centimeters = ($inches * 2.54);
+        $centimeters = $feet_in_centimeters + $inches_in_centimeters;
+        // dd($centimeters);
+
+        $height->centimeters = $centimeters;
+        $height->height = $feet.'ft '.$inches.'in'; 
+            $height->save();
         return redirect('/admin/height')
             ->with('message','Your Data Has Been Created Successfully');
     }

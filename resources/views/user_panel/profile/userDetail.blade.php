@@ -275,10 +275,22 @@
                                         <div class="col-md-6">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <p class="text-light mb-0 p-1">No.of Siblings</p>
+                                                    <p class="text-light mb-0 p-1">Siblings</p>
                                                 </div>
                                                 <div class="col-6">
                                                     <p class="mb-0 p-1">:&nbsp;{{ $user->siblings }}</p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <p class="text-light mb-0 p-1">No. of Brothers</p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <p class="mb-0 p-1">:&nbsp;{{ $user->no_of_brothers }}</p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <p class="text-light mb-0 p-1">No. of Sisters</p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <p class="mb-0 p-1">:&nbsp;{{ $user->no_of_sisters }}</p>
                                                 </div>
                                                 <div class="col-6">
                                                     <p class="text-light mb-0 p-1">Family Type</p>

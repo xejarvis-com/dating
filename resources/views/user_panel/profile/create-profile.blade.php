@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Complete Your Profile</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ url('public/css/form.css') }}">
+<link rel="stylesheet" href="{{ url('css/form.css') }}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <style>
@@ -43,19 +43,10 @@
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="">In Which Country You Born?*</label>
-                                <input type="text" class="form-control1" name="country_born" id="country_born">
+                                <label for="">Lives with Your family?*</label>
+                                <input type="text" class="form-control1" name="live_family" id="live_family">
                             </div>
-                            <span id="error-country_born"></span>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="">What is your country of citizenship??*</label>
-                                <input type="text" class="form-control1" name="country_citizenship" id="country_citizenship">
-                            </div>
-                            <span id="error-country_citizenship"></span>
+                            <span id="error-live_family"></span>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -140,15 +131,6 @@
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="">Paasing Date*</label>
-                                <input type="date" class="form-control1" name="complete_year" id="complete_year">
-                            </div>
-                            <span id="error-complete_year"></span>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-12">
-                            <div class="form-group">
                                 <label for="">Your college name (The Highest degree)</label>
                                 <input type="text" id="college_name" class="form-control1" name="college_name">
                             </div>
@@ -183,16 +165,16 @@
                             <span id="error-designation"></span>
                         </div>
                     </div>
-{{--                    <div class="row mb-3">--}}
-{{--                        <div class="col-md-12">--}}
-{{--                            <div class="form-group">--}}
-{{--                                <label for="">Current Company Name*</label>--}}
-{{--                                <input type="text" class="form-control1" name="current_company" id="current_company">--}}
-{{--                            </div>--}}
-{{--                            <span id="error-current_company"></span>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-                    <div class="row">
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">Current Company Name*</label>
+                                <input type="text" class="form-control1" name="current_company" id="current_company">
+                            </div>
+                            <span id="error-current_company"></span>
+                        </div>
+                    </div>
+                    <div class="row" style="display:none;">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Salary*</label>
@@ -200,6 +182,66 @@
                                     <option value="" selected>Select Option</option>
                                     @foreach($salary as $data)
                                         <option value="{{ $data->salary }}">{{ $data->salary }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <span id="error-salary"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                        <div class="form-group">
+                                <label for="">Salary In:</label>
+                                <select class="form-control1" name="salary_in" id="salary_in" aria-label="Default select example" onchange="getMoneyDropdown(event,this)">
+                                    <option value="" selected>Select Option</option>
+                                    @foreach(CT::getMoneyTypeList() as $rows)
+                                        <option value="{{ $rows }}">{{ $rows }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <span id="error-salary"></span>
+                        </div>
+                    
+                    </div>
+
+                    <div class="row" style="display:none;" id="salary_in_taka">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">Monthly Salary:</label>
+                                <select class="form-control1" name="salary" id="salary" aria-label="Default select example">
+                                    <option value="" selected>Select Option</option>
+                                    @foreach(CT::getMonthlySalaryInTaka() as $data)
+                                        <option value="{{ $data }}">{{ $data }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <span id="error-salary"></span>
+                        </div>
+                    </div>
+
+                    <div class="row" style="display:none;" id="salary_in_dollar">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">Monthly Salary:</label>
+                                <select class="form-control1" name="salary" id="salary" aria-label="Default select example">
+                                    <option value="" selected>Select Option</option>
+                                    @foreach(CT::getMonthlySalaryInDollar() as $data)
+                                        <option value="{{ $data }}">{{ $data }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <span id="error-salary"></span>
+                        </div>
+                    </div>
+
+                    <div class="row" style="display:none;" id="salary_in_rupee">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">Monthly Salary:</label>
+                                <select class="form-control1" name="salary" id="salary" aria-label="Default select example">
+                                    <option value="" selected>Select Option</option>
+                                    @foreach(CT::getMonthlySalaryInRupee() as $data)
+                                        <option value="{{ $data }}">{{ $data }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -257,10 +299,46 @@
                 </div>
     </form>
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.0/jquery.easing.js" type="text/javascript"></script>
-<script src="{{ url('public/js/form2.js') }}"></script>
+<script src="{{ url('js/form2.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script>
+
+function getMoneyDropdown(event,obj)
+{
+
+    event.preventDefault();
+
+    var salary_type = $(obj).val();
+
+    if(salary_type == "Pakistani Rupee" || salary_type == "Indian Rupee")
+    {
+    $('#salary_in_rupee').show();
+    $('#salary_in_taka').hide();
+    $('#salary_in_dollar').hide();
+
+    }
+    else if(salary_type == "Taka")
+    {
+    $('#salary_in_taka').show();
+    $('#salary_in_rupee').hide();
+    $('#salary_in_dollar').hide();
+
+
+    }
+    else if(salary_type == "Euro" || salary_type == "USD")
+    {
+
+        $('#salary_in_dollar').show();
+        $('#salary_in_rupee').hide();
+        $('#salary_in_taka').hide();
+
+    }
+}
+
+
+</script>
 </body>
 </html>

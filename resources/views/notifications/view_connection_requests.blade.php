@@ -5,13 +5,9 @@
 <div class="container-fluid mt-5">
     <div class="row">
         <div class="col-md-9">
-             @if(isset($title))
-        <h2>{{$title}}</h2>
-      @else
-      <h2>User Profiles</h2>
-      @endif
+            
+      <h2>Connection Requests</h2>
       
-      @foreach($user_profile_list as $rows)
       <div class="card mb-5 mb-xxl-8">
 		<div class="card-body pt-9 pb-0">
 			<!--begin::Details-->
@@ -32,7 +28,7 @@
 						<div class="d-flex flex-column">
 							<!--begin::Name-->
 							<div class="d-flex align-items-center mb-2">
-								<a href="{{route('visitprofiles',['profile_id' => encrypt($rows->profile_id)])}}">{{$rows->first_name}}</a>
+								<a href="{{route('visitprofiles',['profile_id' => encrypt($user->profile->id)])}}">{{$user->first_name}}</a>
 								<a href="#">
 									<!--begin::Svg Icon | path: icons/duotune/general/gen026.svg-->
 									<span class="svg-icon svg-icon-1 svg-icon-primary">
@@ -55,7 +51,7 @@
 										<path d="M12 22C14.6 22 17 21 18.7 19.4C17.9 16.9 15.2 15 12 15C8.8 15 6.09999 16.9 5.29999 19.4C6.99999 21 9.4 22 12 22Z" fill="currentColor"></path>
 									</svg>
 								</span>
-								<!--end::Svg Icon--> {{$rows->material_status}}</a>
+								<!--end::Svg Icon--> {{$user->material_status}}</a>
 								<a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
 								<!--begin::Svg Icon | path: icons/duotune/general/gen018.svg-->
 								<span class="svg-icon svg-icon-4 me-1">
@@ -64,7 +60,7 @@
 										<path d="M12.0624 13.0453C13.7193 13.0453 15.0624 11.7022 15.0624 10.0453C15.0624 8.38849 13.7193 7.04535 12.0624 7.04535C10.4056 7.04535 9.06241 8.38849 9.06241 10.0453C9.06241 11.7022 10.4056 13.0453 12.0624 13.0453Z" fill="currentColor"></path>
 									</svg>
 								</span>
-								<!--end::Svg Icon--> {{$rows->city_live}}</a>
+								<!--end::Svg Icon--> {{$user->city_live}}</a>
 								<a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
 								<!--begin::Svg Icon | path: icons/duotune/communication/com011.svg-->
 								<span class="svg-icon svg-icon-4 me-1">
@@ -73,14 +69,20 @@
 										<path d="M21 5H2.99999C2.69999 5 2.49999 5.10005 2.29999 5.30005L11.2 13.3C11.7 13.7 12.4 13.7 12.8 13.3L21.7 5.30005C21.5 5.10005 21.3 5 21 5Z" fill="currentColor"></path>
 									</svg>
 								</span>
-								<!--end::Svg Icon-->{{$rows->dob}}</a>
+								<!--end::Svg Icon-->{{$user->dob}}</a>
 							</div>
 							<!--end::Info-->
 						</div>
 						<!--end::User-->
 						<!--begin::Actions-->
 						<div class="d-flex my-4">
-							<a href="#" class="btn btn-sm btn-light me-2" id="kt_user_follow_button">
+							@if($request->status == "Sent")
+								<a href="#" class="btn btn-sm btn-danger me-2" id="kt_user_follow_button">
+								Reject
+								</a>
+							@endif
+							
+
 								<!--begin::Svg Icon | path: icons/duotune/arrows/arr012.svg-->
 								<span class="svg-icon svg-icon-3 d-none">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -90,19 +92,18 @@
 								</span>
 								<!--end::Svg Icon-->
 								<!--begin::Indicator-->
-								<span class="indicator-label">Message Me</span>
 								<span class="indicator-progress">Please wait... 
 								<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
 								<!--end::Indicator-->
-							</a>
-							@php($request = $requests->where('to_user_id',$rows->user_id)->first())
-							@if(!isset($request->id))
-							<a href="{{route('sendrequest',['id' => $rows->user_id])}}" class="btn btn-primary btn-sm" style="float:right;">Send Request</a>	
-							@else
+					
+								@if($request->status == "Accepted")
+									<span id="success-badge" class="badge badge-success p-3">You are now friends</span>
+								@else
+								<a href="#" class="btn btn-success btn-sm accept-badge" onclick="acceptRequest(event,'{{$user->id}}','{{$request->id}}','#success_badge')" style="float:right;">Accept</a>
+								@endif
+						
 
-							<a href="#" class="btn btn-success btn-sm" style="float:right;">Request Sent</a>
 							
-							@endif	
 
 
 					</div>
@@ -118,11 +119,33 @@
 		</div>
 	</div>
       
-      @endforeach
             
         </div>
     </div>
 </div>
 
+
+@endsection
+
+@section('script')
+
+<script>
+
+function acceptRequest(event,user_id,request_id,target)
+{
+	event.preventDefault();
+var route = "{{route('acceptrequest')}}";
+
+	$.get(route,{user_id:user_id,request_id:request_id},function(data)
+	{
+		if(data.status)
+		{
+			location.reload();
+		
+		}
+	});
+}
+
+</script>
 
 @endsection

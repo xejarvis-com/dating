@@ -7,11 +7,11 @@
     <link rel="shortcut icon" href="{{ url('css/assets/images/x-icon.png') }}" type="image/x-icon">
 
     <!-- Other css -->
-    <link rel="stylesheet" href="{{ url('public/css/assets/css/animate.css') }}">
-    <link rel="stylesheet" href="{{ url('public/css/assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url('public/css/assets/css/icofont.min.css') }}">
-    <link rel="stylesheet" href="{{ url('public/css/assets/css/swiper.min.css') }}">
-    <link rel="stylesheet" href="{{ url('public/css/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url('css/assets/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ url('css/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url('css/assets/css/icofont.min.css') }}">
+    <link rel="stylesheet" href="{{ url('css/assets/css/swiper.min.css') }}">
+    <link rel="stylesheet" href="{{ url('css/assets/css/style.css') }}">
 
     <title>Couple Tuple</title>
 </head>
@@ -1010,14 +1010,14 @@
 
 
 <!-- All Scripts -->
-<script src="{{ url('public/css/assets/js/jquery.js') }}"></script>
-<script src="{{ url('public/css/assets/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ url('public/css/assets/js/waypoints.min.js') }}"></script>
-<script src="{{ url('public/css/assets/js/swiper.min.js') }}"></script>
-<script src="{{ url('public/css/assets/js/jquery.counterup.min.js') }}"></script>
-<script src="{{ url('public/css/assets/js/wow.min.js') }}"></script>
-<script src="{{ url('public/css/assets/js/isotope.pkgd.min.js') }}"></script>
-<script src="{{ url('public/css/assets/js/functions.js') }}"></script>
+<script src="{{ url('css/assets/js/jquery.js') }}"></script>
+<script src="{{ url('css/assets/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url('css/assets/js/waypoints.min.js') }}"></script>
+<script src="{{ url('css/assets/js/swiper.min.js') }}"></script>
+<script src="{{ url('css/assets/js/jquery.counterup.min.js') }}"></script>
+<script src="{{ url('css/assets/js/wow.min.js') }}"></script>
+<script src="{{ url('css/assets/js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ url('css/assets/js/functions.js') }}"></script>
 </body>
 
 
