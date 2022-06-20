@@ -131,7 +131,13 @@ ul{
           <div class="d-flex flex-center flex-column py-3">
               <!--begin::Avatar-->
               <div class="symbol symbol-100px symbol-circle mb-7">
-                  <img src="../../../assets/media/avatars/300-6.jpg" alt="image">
+              @php($image = $rows->getUserImages($rows->profile_id))  
+              @if(isset($image->id))
+                  <img src="{{ asset($image->path)}}" alt="image">
+                  @else
+                  <img src="" alt="image">
+
+                  @endif
               </div>
               <!--end::Avatar-->
               <!--begin::Name-->

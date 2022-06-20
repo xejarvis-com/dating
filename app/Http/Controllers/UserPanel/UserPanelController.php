@@ -61,12 +61,17 @@ class UserPanelController extends Controller
         {
             $profile = $user->profile;
 
-            $visitors_list = $profile_view->getVisitorsListByUserId($profile->id);
-            $visitors_count = $visitors_list->count();
-            $invitation_list = $this->connection_request->getConnectionRequestsByUserId(Auth::user()->id);
+            if(isset($profile->id))
+            {
+                $visitors_list = $profile_view->getVisitorsListByUserId($profile->id);
+                $visitors_count = $visitors_list->count();
+                $invitation_list = $this->connection_request->getConnectionRequestsByUserId(Auth::user()->id);
+    
+                $accepted_invitations = $invitation_list->where('status','Accepted');
+                $pending_invitations = $invitation_list->where('status','Sent');
+            }
 
-            $accepted_invitations = $invitation_list->where('status','Accepted');
-            $pending_invitations = $invitation_list->where('status','Sent');
+
 
         }
         else{

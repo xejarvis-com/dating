@@ -69,9 +69,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $user = User::join('profiles','users.id' ,'profiles.user_id')
         ->select('profiles.id as profile_id','users.id as user_id','users.first_name','users.last_name','profiles.city_live','users.dob','profiles.marital_status','users.religion','users.community','profiles.sub_community')
-        ->where('users.id','!=',Auth::user()->id)
-        ->where('profiles.height','>=',$conditionArr['min_height'])
-        ->where('profiles.height','<=',$conditionArr['max_height']);
+        ->where('users.id','!=',Auth::user()->id);
+        // ->where('profiles.height','>=',$conditionArr['min_height'])
+        // ->where('profiles.height','<=',$conditionArr['max_height']);
 
         if(isset($condition['marital_status']))
         {

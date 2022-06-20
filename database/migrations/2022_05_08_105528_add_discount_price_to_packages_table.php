@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('packages', function (Blueprint $table) {
-            $table->string('discount_percentage')->nullable();
+            // $table->string('discount_percentage')->nullable();
         });
     }
 

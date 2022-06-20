@@ -53,6 +53,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Marital status*</label>
+                             
                                 <select class="form-control1" name="marital_status" id="marital_status" aria-label="Default select example">
                                     <option value="" selected>Select Option</option>
                                     @foreach($materialStatus as $material)
